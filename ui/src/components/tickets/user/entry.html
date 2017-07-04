@@ -1,0 +1,57 @@
+<div class="col-xs-12">
+  <h3 class="col-xs-6 marginless" ng-if="userTicketCtrl.editing.id != null">Edit Ticket</h3>
+  <h3 class="col-xs-6 marginless" ng-if="userTicketCtrl.editing.id == null">New Ticket</h3>
+  <div class="col-xs-6">
+    <button class="btn btn-md btn-primary pull-right" ng-click="userTicketCtrl.template = 'list'">
+      <i class="fa fa-long-arrow-left" aria-hidden="true"></i> Back To List
+    </button>
+  </div>
+</div>
+
+<div class="col-xs-offset-3 col-xs-6">
+  <md-card>
+    <md-card-header>
+      <md-card-header-text>
+        <div class="row">
+          <span class="md-subhead col-xs-12">
+            <i>Enter Ticket Details</i>
+            <span class="md-title paddingless pull-right" ng-bind="userTicketCtrl.editing.id"></span>
+          </span>
+        </div>
+      </md-card-header-text>
+    </md-card-header>
+
+    <md-divider></md-divider>
+
+    <md-card-content>
+      <md-content layout-padding>
+        <form name="ticketForm">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Ticket Subject</label>
+            <input name="subject" ng-model="userTicketCtrl.editing.subject" placeholder="Enter a subject" required>
+            <div ng-messages="ticketForm.subject.$error" role="alert" multiple>
+              <div ng-message="required" class="my-message">Subject is required</div>
+            </div>
+          </md-input-container>
+
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Content</label>
+            <input name="content" type="textarea" ng-model="userTicketCtrl.editing.content" placeholder="Enter some content">
+          </md-input-container>
+        </form>
+      </md-content>
+    </md-card-content>
+
+    <md-divider></md-divider>
+    <md-card-header>
+      <md-card-header-text>
+        <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+          <button class="btn btn-md btn-primary col-xs-5"
+                  ng-click="userTicketCtrl.editing.id != null ? userTicketCtrl.update(row.id) : userTicketCtrl.create()">
+            Raise
+          </button>
+        </section>
+      </md-card-header-text>
+    </md-card-header>
+  </md-card>
+</div>

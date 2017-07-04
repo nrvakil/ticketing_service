@@ -1,0 +1,15 @@
+<div class="col-xs-12" ng-repeat="(key, rows) in agentTicketCtrl.rows">
+  <span class="col-xs-12">
+    <h3 class="col-xs-6">{{ key | capitalize }}</h3>
+    <div class="col-xs-6" ng-show="$index == 0">
+      <button class="btn btn-md btn-primary pull-right match-h-margins" ng-click="agentTicketCtrl.report()">
+        <i class="fa fa-download"> Download Report</i>
+      </button>
+    </div>
+  </span>
+  <div class="col-xs-4" ng-repeat="row in rows">
+    <div ng-include="'src/components/tickets/agent/card.html'"></div>
+  </div>
+</div>
+
+<div ng-include="'src/shared/templates/missingData.html'" ng-if="agentTicketCtrl.rows.length == 0"></div>

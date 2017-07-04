@@ -1,0 +1,70 @@
+<div class="col-xs-offset-3 col-xs-6">
+  <md-card>
+    <md-card-header>
+      <md-card-header-text>
+        <div class="row">
+          <span class="md-subhead col-xs-12">
+            <i>Signup</i>
+          </span>
+        </div>
+      </md-card-header-text>
+    </md-card-header>
+
+    <md-divider></md-divider>
+
+    <md-card-content>
+      <md-content layout-padding>
+        <div>
+          <form name="registrationForm">
+            <md-input-container class="md-block" flex-gt-sm>
+              <label>Name</label>
+              <input name="name" ng-model="regCtrl.signupCredentials.name" placeholder="Enter your name" required>
+              <div ng-messages="registrationForm.name.$error" role="alert" multiple>
+                <div ng-message="required" class="my-message">Name is required</div>
+              </div>
+            </md-input-container>
+
+            <md-input-container class="md-block" flex-gt-sm>
+              <label>Email</label>
+              <input name="email" ng-model="regCtrl.signupCredentials.email" placeholder="Enter your email" required>
+              <div ng-messages="registrationForm.email.$error" role="alert" multiple>
+                <div ng-message="required" class="my-message">Email is required</div>
+              </div>
+            </md-input-container>
+
+            <md-input-container class="md-block" flex-gt-sm>
+              <label>Password</label>
+              <input name="password" type="password" ng-model="regCtrl.signupCredentials.password"
+                     placeholder="Enter your password" required>
+              <div ng-messages="registrationForm.password.$error" role="alert" multiple>
+                <div ng-message="required" class="my-message">Password is required</div>
+              </div>
+            </md-input-container>
+
+            <md-input-container class="md-block" flex-gt-sm>
+              <md-checkbox ng-model="regCtrl.signupCredentials.is_agent" aria-label="Is Agent">
+                I am an agent!
+              </md-checkbox>
+            </md-input-container>
+          </form>
+        </div>
+      </md-content>
+    </md-card-content>
+
+    <md-divider></md-divider>
+    <md-card-header>
+      <md-card-header-text>
+        <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+          <button class="btn btn-md btn-primary col-xs-6" ng-click="regCtrl.signup()">
+            Signup
+          </button>
+        </section>
+      </md-card-header-text>
+    </md-card-header>
+    <md-card-content>
+      <md-content layout-padding>
+        <a href="#" class="pull-right" ng-click="regCtrl.switchToLogin()">Login?</a>
+      </md-content>
+    </md-card-content>
+  </md-card>
+</div>

@@ -1,0 +1,13 @@
+{
+  "devDependencies": {
+    "browser-sync": "^2.12.5",
+    "gulp": "^3.9.1",
+    "gulp-clean": "^0.3.2",
+    "gulp-concat": "^2.6.0",
+    "gulp-inject": "^4.2.0",
+    "gulp-minify": "^1.0.0",
+    "gulp-rev": "^7.1.2",
+    "gulp-uglify": "^3.0.0",
+    "gulp-watch": "^4.3.5"
+  }
+}

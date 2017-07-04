@@ -1,0 +1,36 @@
+<md-card>
+  <md-card-header>
+    <md-card-header-text>
+      <span class="md-title">
+        <span># {{ row.id }}</span>
+        <span class="pull-right">
+          <label class="label label-lg {{adminCtrl.statusLabel(row.status)}}"
+                 ng-bind="row.status"></label>
+        </span>
+      </span>
+    </md-card-header-text>
+  </md-card-header>
+  <md-divider></md-divider>
+
+  <md-card-content>
+    <span class="md-subhead col-xs-12 paddingless">
+      <span class="md-subhead"><i class="fa fa-user-o" aria-hidden="true"></i> Name:</span>
+      <span class="pull-right">{{ row.name }}</span>
+    </span>
+
+    <span class="md-subhead md-subhead col-xs-12 paddingless">
+      <span class="md-subhead"><i class="fa fa-envelope-o" aria-hidden="true"></i> Email:</span>
+      <span class="pull-right">{{ row.email }}</span>
+    </span>
+  </md-card-content>
+  <md-divider></md-divider>
+
+  <md-card-actions layout="row" layout-align="center center">
+    <md-button class="btn btn-sm btn-default" ng-click="adminCtrl.banUser(row)" ng-show="row.status == 'active'">
+      <i class="fa fa-ban" aria-hidden="true"></i> Ban
+    </md-button>
+    <md-button class="btn btn-sm btn-default" ng-click="adminCtrl.activateUser(row)"  ng-show="row.status == 'banned'">
+      <i class="fa fa-check" aria-hidden="true"></i> Activate
+    </md-button>
+  </md-card-actions>
+</md-card>

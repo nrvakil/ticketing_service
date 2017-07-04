@@ -1,0 +1,70 @@
+<!doctype html>
+<html style="background-color: rgb(241, 242, 246);" lang="en" data-framework="angularjs" ng-app="Ticketing Service" ng-controller="AppController as appCtrl">
+  <head>
+    <title>Ticketing Service</title>
+
+    <!-- =========================== STYLES =========================== -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.0.9/angular-material.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="bower_components/angular-toastr/dist/angular-toastr.min.css">
+    <link rel="stylesheet" href="bower_components/angular-spinkit/build/angular-spinkit.min.css">
+    <!-- inject:css -->
+    <link rel="stylesheet" href="/dist/main-2cec0b997f.css">
+    <!-- endinject -->
+    <!-- ============================================================== -->
+  </head>
+
+  <body style="background-color: rgb(241, 242, 246);">
+    <nav class="navbar navbar-default" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" ng-show="loggedIn" ui-sref="tickets">Dashboard</a>
+        </div>
+        <div ng-controller="RegistrationController as regCtrl">
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <a href="#" ng-show="loggedIn" ng-click="regCtrl.logout()">
+                <i class="fa fa-sign-out" aria-hidden="true"></i> Logout
+                ({{ (regCtrl.currentUser().email) }})
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <section style="background-color: rgb(241, 242, 246);">
+      <div class="col-xs-12" ng-controller="RegistrationController as regCtrl" ng-show="loggedIn">
+        <h2 class="col-xs-12">Welcome {{ regCtrl.currentUser().name }}!</h2>
+        <hr>
+        <br><br>
+      </div>
+      <div id="view" ui-view ng-show="showUi"></div>
+      <div ng-show="!showUi" ng-include="'src/shared/templates/httpLoader.html'"></div>
+    </section>
+
+    <!-- =========================== SCRIPTS =========================== -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular-aria.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.0.9/angular-material.min.js"></script>
+
+    <script src="bower_components/angular-animate/angular-animate.min.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="bower_components/angular-spinkit/build/angular-spinkit.min.js"></script>
+    <script src="bower_components/angular-toastr/dist/angular-toastr.tpls.min.js"></script>
+    <script src="bower_components/lodash/dist/lodash.min.js"></script>
+    <!-- inject:js -->
+    <script src="/dist/main-214f3ac9d3.js"></script>
+    <!-- endinject -->
+    <!-- =============================================================== -->
+  </body>
+</html>

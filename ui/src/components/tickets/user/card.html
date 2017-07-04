@@ -1,0 +1,61 @@
+<md-card>
+  <md-card-header>
+    <md-card-header-text>
+      <span class="md-title">
+        <b># {{ row.id }}</b>
+        <span class="pull-right">
+          <label class="label label-lg {{userTicketCtrl.statusLabel(row.status)}}"
+                 ng-bind="row.status"></label>
+        </span>
+      </span>
+    </md-card-header-text>
+  </md-card-header>
+
+  <md-card-title>
+    <md-card-title-text>
+      <span class="md-headline"> {{ row.subject }}</span>
+    </md-card-title-text>
+  </md-card-title>
+  <md-divider></md-divider>
+
+  <md-card-content>
+    <p ng-bind="row.content"></p>
+  </md-card-content>
+  <md-divider></md-divider>
+
+  <md-card-content>
+    <span class="md-subhead col-xs-12 paddingless">
+      <i class="fa fa-calendar-check-o"></i> <i>Raised On: </i>
+      <span class="pull-right">{{ row.created_at | date:'dd-MMM-yyyy HH:mm:ss' }}</span>
+    </span>
+    <span class="md-subhead col-xs-12 paddingless">
+      <i class="fa fa-calendar-plus-o"></i> <i>Last Update On: </i>
+      <span class="pull-right">{{ row.updated_at | date:'dd-MMM-yyyy HH:mm:ss' }}</span>
+    </span>
+    <span class="md-subhead col-xs-12 paddingless">
+      <i class="fa fa-clock-o"></i> <i>Closed On: </i>
+      <span class="pull-right">{{ row.closed_on | date:'dd-MMM-yyyy HH:mm:ss' }}</span>
+    </span>
+  </md-card-content>
+  <md-divider></md-divider>
+
+  <md-card-content>
+    <span class="md-subhead">
+      <i class="fa fa-address-book-o"></i> <i>Agent: </i>
+      <span class="pull-right">{{ row.agent_name }}, {{ row.agent_email}}</span>
+    </span>
+  </md-card-content>
+  <md-divider></md-divider>
+
+  <md-card-actions layout="row" layout-align="end center">
+    <md-button class="btn btn-sm btn-default" ng-click="userTicketCtrl.edit(row)" ng-show="userTicketCtrl.isEditable(row)">
+      <i class="fa fa-pencil-square-o"></i> Edit
+    </md-button>
+    <md-button class="btn btn-sm btn-default" ng-click="userTicketCtrl.withdraw(row)" ng-show="userTicketCtrl.isWithdrawable(row)">
+      <i class="fa fa-trash"> Withdraw</i>
+    </md-button>
+    <md-button class="btn btn-sm btn-default" ng-click="userTicketCtrl.reopen(row)" ng-show="userTicketCtrl.isReopenable(row)">
+      <i class="fa fa-sign-in"> Reopen</i>
+    </md-button>
+  </md-card-actions>
+</md-card>

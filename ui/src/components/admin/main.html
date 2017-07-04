@@ -1,0 +1,21 @@
+<div class="col-xs-12">
+  <h3 class="col-xs-6">Users</h3>
+</div>
+<br><br>
+
+<div class="col-xs-12">
+  <div class="col-xs-3 paddingless" ng-repeat="row in adminCtrl.users">
+    <div ng-include="'src/components/admin/userCard.html'"></div>
+  </div>
+</div>
+
+<div class="col-xs-12">
+  <h3 class="col-xs-6">Agents</h3>
+</div>
+<br><br>
+
+<div class="col-xs-12">
+  <div class="col-xs-3 paddingless" ng-repeat="row in adminCtrl.agents">
+    <div ng-include="'src/components/admin/agentCard.html'"></div>
+  </div>
+</div>

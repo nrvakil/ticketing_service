@@ -1,0 +1,18 @@
+<div class="col-xs-12" ng-show="userTicketCtrl.rows[0] == undefined">
+  <div class="pull-center">
+    <button class="btn btn-md btn-primary match-h-margins" ng-click="userTicketCtrl.new()">
+      <i class="fa fa-plus"> Raise Ticket</i>
+    </button>
+  </div>
+</div>
+
+<div class="col-xs-12" ng-repeat="(key, rows) in userTicketCtrl.rows">
+  <span class="col-xs-12">
+    <h3 class="col-xs-12">{{ key | capitalize }}</h3>
+  </span>
+  <div class="col-xs-4" ng-repeat="row in rows">
+    <div ng-include="'src/components/tickets/user/card.html'"></div>
+  </div>
+</div>
+
+<div ng-include="'src/shared/templates/missingData.html'" ng-if="userTicketCtrl.rows.length == 0"></div>
