@@ -18,6 +18,6 @@ class User < ActiveRecord::Base
   scope :read, -> { select(:id, :name, :email, :status).entries }
 
   def downcase_email
-    email.delete(' ').downcase
+    email.delete(' ').downcase if email
   end
 end

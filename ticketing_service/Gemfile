@@ -20,7 +20,7 @@ gem 'rack-cors', require: 'rack/cors'
 group :development, :test do
   gem 'spring'
   gem 'byebug'
-
+  gem 'simplecov', require: false
   gem 'rspec-rails', '~> 3.0'
   gem 'factory_girl_rails', '4.5.0'
   gem 'database_cleaner', '1.4.1'

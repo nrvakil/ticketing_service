@@ -9,7 +9,7 @@ RSpec.describe Ticket, type: :model do
   describe '.validations' do
     it { should validate_presence_of(:subject) }
     it { should validate_presence_of(:user_id) }
-    it { should validate_inclusion_of(:status).in_array(TICKET_STATUS_LIST) }
+    it { should validate_inclusion_of(:status).in_array(States.ticket_states) }
   end
 
   describe '.create' do
@@ -20,12 +20,26 @@ RSpec.describe Ticket, type: :model do
   end
 
   describe '.update' do
-    subject do
-      created_ticket.update_attributes! update_params
-      created_ticket
+    context 'with valid status' do
+      subject do
+        created_ticket.update_attributes! update_params
+        created_ticket
+      end
+
+      specify { expect(subject.subject).to eq 'updated ticket' }
+      specify { expect(subject.content).to eq 'u1' }
     end
 
-    specify { expect(subject.subject).to eq 'updated ticket' }
-    specify { expect(subject.content).to eq 'u1' }
+    context 'with invalid status' do
+      subject do
+        created_ticket.update_attributes! status: States.ticket.withdrawn
+        created_ticket
+      end
+
+      specify do
+        expect { subject.update_attributes!(content: 'new content') }
+          .to raise_error Exceptions::TicketClosed
+      end
+    end
   end
 end

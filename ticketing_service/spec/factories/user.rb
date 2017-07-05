@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :user do
-    sequence(:name) { |n| "name #{n}" }
-    sequence(:email) { |n| "email#{n}@emails.com" }
+    sequence(:name) { |n| "user name #{n}" }
+    sequence(:email) { |n| "user-email#{n}@emails.com" }
     password 'pwd'
 
     trait :invalid_parameters do

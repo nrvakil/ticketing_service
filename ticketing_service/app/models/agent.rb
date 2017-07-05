@@ -21,7 +21,7 @@ class Agent < ActiveRecord::Base
   private
 
   def downcase_email
-    email.delete(' ').downcase
+    email.delete(' ').downcase if email
   end
 
   def restrict_position
